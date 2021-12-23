@@ -1,4 +1,9 @@
 # sauron4
+fourth approach to **Sauron - *a real time eye on your network*** - this time in Go Language and optionally sending data to InfluxDB
+
+## features
+* ICMP ping to listed targets
+* optional sending of results to InfluxDB
 
 ## execution
 ```bash

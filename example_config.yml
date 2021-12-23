@@ -11,6 +11,7 @@ whoami: local_hostname
 
 pinger_params:
   icmp:
+    count: 3
     interval: 10
     timeout: 500
 

@@ -25,6 +25,7 @@ type Config struct {
 	WhoAmI       string `yaml:"whoami"`
 	PingerParams struct {
 		ICMP struct {
+			Count    int `yaml:"count"`
 			Interval int `yaml:"interval"`
 			Timeout  int `yaml:"timeout"`
 		} `yaml:"icmp"`
@@ -53,9 +54,9 @@ func main() {
 		if pingErr != nil {
 			panic(pingErr)
 		}
-		pinger.Count = 3
-		pinger.Interval = time.Duration(time.Millisecond * 1000)
-		pinger.Timeout = time.Duration(time.Millisecond * 1000)
+		pinger.Count = config.PingerParams.ICMP.Count
+		pinger.Interval = time.Duration(config.PingerParams.ICMP.Interval * 1000000)
+		pinger.Timeout = time.Duration(config.PingerParams.ICMP.Timeout * 1000000)
 		pingErr = pinger.Run()
 		if pingErr != nil {
 			panic(pingErr)
