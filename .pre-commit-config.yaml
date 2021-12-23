@@ -1,0 +1,25 @@
+---
+# macOS instructions to get all tools:
+#   brew install yamllint revive gosec staticcheck gofumpt go-critic
+#   go get -u golang.org/x/lint/golint
+repos:
+  - repo: "https://github.com/pre-commit/pre-commit-hooks"
+    rev: v4.0.1
+    hooks:
+      - id: check-yaml
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+
+  - repo: "https://github.com/tekwizely/pre-commit-golang"
+    rev: v1.0.0-beta.5
+    hooks:
+      - id: go-build-mod
+      - id: go-mod-tidy
+      - id: go-test-mod
+      - id: go-vet
+      - id: go-revive
+      - id: go-sec-mod
+      - id: go-staticcheck-mod
+      - id: go-fumpt
+      - id: go-lint
+      - id: go-critic
