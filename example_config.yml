@@ -1,0 +1,17 @@
+---
+influxdb:
+  host: 127.0.0.1
+  port: 8086
+  db: sauron
+  user: sauron
+  pass: sauron
+
+whoami: local_hostname
+
+targets:
+  - name: google
+    type: icmp
+    host: 8.8.8.8
+  - name: cloudflare
+    type: icmp
+    host: 1.1.1.1
