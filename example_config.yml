@@ -8,6 +8,11 @@ influxdb:
 
 whoami: local_hostname
 
+pinger_params:
+  icmp:
+    interval: 10
+    timeout: 500
+
 targets:
   - name: google
     type: icmp

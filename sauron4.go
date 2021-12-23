@@ -19,7 +19,13 @@ type Config struct {
 		User string `yaml:"user"`
 		Pass string `yaml:"pass"`
 	} `yaml:"influxdb"`
-	WhoAmI  string `yaml:"whoami"`
+	WhoAmI       string `yaml:"whoami"`
+	PingerParams struct {
+		ICMP struct {
+			Interval int `yaml:"interval"`
+			Timeout  int `yaml:"timeout"`
+		} `yaml:"icmp"`
+	} `yaml:"pinger_params"`
 	Targets []struct {
 		Name string `yaml:"name"`
 		Type string `yaml:"type"`
@@ -45,8 +51,8 @@ func main() {
 			panic(pingErr)
 		}
 		pinger.Count = 3
-		pinger.Interval, _ = time.ParseDuration("10ms")
-		pinger.Timeout, _ = time.ParseDuration("500ms")
+		pinger.Interval = time.Duration(time.Millisecond * 1000)
+		pinger.Timeout = time.Duration(time.Millisecond * 1000)
 		pingErr = pinger.Run()
 		if pingErr != nil {
 			panic(pingErr)
